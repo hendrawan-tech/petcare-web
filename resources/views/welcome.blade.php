@@ -181,7 +181,7 @@
                     <div class="col-md-5 col-lg-6">
                         <div class="video-app-wrap ml-auto mt--120 d-none d-sm-none d-md-block d-lg-block">
                             <div class="iphone-mask">
-                                <img src="{{ asset('assets/frontend/img/hero-app-image.png') }}" alt="app"
+                                <img src="{{ asset('assets/frontend/img/mockup-header.png') }}" alt="app"
                                     class="img-fluid mask-img" />
                             </div>
                         </div>
