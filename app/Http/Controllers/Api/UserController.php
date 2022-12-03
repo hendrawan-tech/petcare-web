@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,27 +23,19 @@ class UserController extends Controller
             );
 
             if ($validateUser->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 401);
+                return ResponseFormatter::error($validateUser->errors(), 'validation error', 401);
             }
 
             if (!Auth::attempt($request->only(['email', 'password']))) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Email & Password does not match with our record.',
-                ], 401);
+                return ResponseFormatter::error(null, 'Email & Password does not match with our record.', 401);
             }
 
             $user = User::where('email', $request->email)->first();
 
-            return response()->json([
-                'status' => true,
-                'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
+            return ResponseFormatter::success([
+                'token' => $user->createToken("API TOKEN")->plainTextToken,
+                'user' => $user,
+            ], 'User Logged In Successfully',);
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
@@ -51,9 +44,13 @@ class UserController extends Controller
         }
     }
 
-    public function getUser($id)
+    public function getUser(Request $request)
     {
-        $user = User::where('id', $id)->first();
-        return $user;   
+        $user = $request->user();
+        if ($user) {
+            return ResponseFormatter::success($user);
+        } else {
+            return ResponseFormatter::error();
+        }
     }
 }

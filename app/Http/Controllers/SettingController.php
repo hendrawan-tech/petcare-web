@@ -48,12 +48,12 @@ class SettingController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
 
-        if ($request['avatar']) {
+        if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
-            $filename = time() . "_" . $file->getClientOriginalName();
-            $upload = 'upload/';
-            $file->move($upload, $filename);
-            $data['avatar'] = $filename;
+            $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path() . '/upload';
+            $file->move($destinationPath, $fileName);
+            $data['avatar'] = $file->getClientOriginalName();
         }
 
         $user->update($data);

@@ -23,12 +23,6 @@
     <link href="{{ asset('assets/css/dark-boxed.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/skin-modes.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <script type="module">
-        import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
-    </script>
-    
-    @livewireStyles
 </head>
 
 <body class="error-page1 main-body bg-light text-dark">
@@ -67,50 +61,6 @@
 
     <!-- custom js -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    @livewireScripts
-    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script>
-    @stack('scripts')
-
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-
-    @if (session()->has('success'))
-        <script>
-            const notyf = new Notyf({
-                dismissible: true
-            })
-            notyf.success('{{ session('success') }}')
-        </script>
-    @endif
-
-    <script>
-        /* Simple Alpine Image Viewer */
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('imageViewer', (src = '') => {
-                return {
-                    imageUrl: src,
-
-                    refreshUrl() {
-                        this.imageUrl = this.$el.getAttribute("image-url")
-                    },
-
-                    fileChosen(event) {
-                        this.fileToDataUrl(event, src => this.imageUrl = src)
-                    },
-
-                    fileToDataUrl(event, callback) {
-                        if (!event.target.files.length) return
-
-                        let file = event.target.files[0],
-                            reader = new FileReader()
-
-                        reader.readAsDataURL(file)
-                        reader.onload = e => callback(e.target.result)
-                    },
-                }
-            })
-        })
-    </script>
 </body>
 
 </html>

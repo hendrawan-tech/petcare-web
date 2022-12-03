@@ -47,11 +47,10 @@ class ProductController extends Controller
         ]);
 
         $file = $request->file('image');
-        $filename = time() . "_" . $file->getClientOriginalName();
-        $upload = 'upload/';
-        $file->move($upload, $filename);
-        $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
-        $data['image'] = $filename;
+        $fileName = $file->getClientOriginalName();
+        $destinationPath = public_path() . '/upload';
+        $file->move($destinationPath, $fileName);
+        $data['image'] = $file->getClientOriginalName();
 
         Product::create($data);
 
@@ -98,12 +97,12 @@ class ProductController extends Controller
             'product_category_id' => 'required',
         ]);
 
-        if ($request->file('image') != null) {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . "_" . $file->getClientOriginalName();
-            $upload  = 'upload/';
-            $file->move($upload, $filename);
-            $data['image'] = $filename;
+            $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path() . '/upload';
+            $file->move($destinationPath, $fileName);
+            $data['image'] = $file->getClientOriginalName();
         }
 
         $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));

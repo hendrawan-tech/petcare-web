@@ -46,12 +46,12 @@ class ArticleController extends Controller
         ]);
 
         $file = $request->file('images');
-        $filename = time() . "_" . $file->getClientOriginalName();
-        $upload = 'upload/';
-        $file->move($upload, $filename);
+        $fileName = $file->getClientOriginalName();
+        $destinationPath = public_path() . '/upload';
+        $file->move($destinationPath, $fileName);
+        $data['images'] = $file->getClientOriginalName();
 
         $data['slug'] = strtolower(str_replace(' ', '-', $data['title']));
-        $data['images'] = $filename;
 
         Article::create($data);
 
@@ -97,12 +97,12 @@ class ArticleController extends Controller
             'category_article_id' => 'required',
         ]);
 
-        if ($request->file('images') != null) {
+        if ($request->hasFile('images')) {
             $file = $request->file('images');
-            $filename = time() . "_" . $file->getClientOriginalName();
-            $upload  = 'upload/';
-            $file->move($upload, $filename);
-            $data['images'] = $filename;
+            $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path() . '/upload';
+            $file->move($destinationPath, $fileName);
+            $data['images'] = $file->getClientOriginalName();
         }
 
         $data['slug'] = strtolower(str_replace(' ', '-', $data['title']));

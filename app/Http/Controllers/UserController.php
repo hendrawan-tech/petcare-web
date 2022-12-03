@@ -51,11 +51,11 @@ class UserController extends Controller
             'avatar' => 'required|file|between:0,2048|mimes:jpeg,jpg,png',
         ]);
 
-        $file = $request->file('avatar');
-        $filename = time() . "_" . $file->getClientOriginalName();
-
-        $upload = 'upload/';
-        $file->move($upload, $filename);
+        $file = $request->file('images');
+        $nameFile = $file->getClientOriginalName();
+        $destinationPath = public_path() . '/upload';
+        $file->move($destinationPath, $nameFile);
+        $filename = $file->getClientOriginalName();
 
         $user = User::create([
             'name' => $data['name'],
