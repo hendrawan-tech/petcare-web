@@ -51,7 +51,7 @@ class UserController extends Controller
             'avatar' => 'required|file|between:0,2048|mimes:jpeg,jpg,png',
         ]);
 
-        $file = $request->file('images');
+        $file = $request->file('avatar');
         $nameFile = $file->getClientOriginalName();
         $destinationPath = public_path() . '/upload';
         $file->move($destinationPath, $nameFile);
