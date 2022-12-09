@@ -30,7 +30,7 @@ class UserController extends Controller
                 return ResponseFormatter::error(null, 'Email atau Kata Sandi anda salah!', 401);
             }
 
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->with('userMetas')->first();
 
             return ResponseFormatter::success([
                 'token' => $user->createToken("API TOKEN")->plainTextToken,
@@ -47,6 +47,7 @@ class UserController extends Controller
     public function getUser(Request $request)
     {
         $user = $request->user();
+        $user['user_metas'] = $request->user()->userMetas;
         if ($user) {
             return ResponseFormatter::success($user);
         } else {
