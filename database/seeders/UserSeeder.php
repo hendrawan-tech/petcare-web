@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             "name" => "Admin",
             "email" => "admin@admin.com",
             "password" => Hash::make("admin"),
-            "phone" => "085231864466",
+            "phone_number" => "081231864466",
             "address" => "Bondowoso",
             "role_id" => 1,
         ]);

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\DataController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [UserController::class, 'loginUser']);
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/verify', [VerificationController::class, 'verify'])->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', [UserController::class, 'getUser']);
+    Route::get('/articles', [DataController::class, 'articles']);
+    Route::get('/schedules/doctor', [DataController::class, 'scheduleDoctor']);
 });

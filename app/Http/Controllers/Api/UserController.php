@@ -27,7 +27,7 @@ class UserController extends Controller
             }
 
             if (!Auth::attempt($request->only(['email', 'password']))) {
-                return ResponseFormatter::error(null, 'Email & Password does not match with our record.', 401);
+                return ResponseFormatter::error(null, 'Email atau Kata Sandi anda salah!', 401);
             }
 
             $user = User::where('email', $request->email)->first();
@@ -35,7 +35,7 @@ class UserController extends Controller
             return ResponseFormatter::success([
                 'token' => $user->createToken("API TOKEN")->plainTextToken,
                 'user' => $user,
-            ], 'User Logged In Successfully',);
+            ], 'Berhasil Login',);
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,

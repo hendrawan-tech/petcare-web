@@ -2,41 +2,117 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\VerifiesEmails;
+use App\Verify\Service;
+use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Support\MessageBag;
+use Illuminate\Http\Request;
+
 
 class VerificationController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Email Verification Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling email verification for any
-    | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
-    |
-    */
 
-    use VerifiesEmails;
+    use RedirectsUsers;
 
     /**
      * Where to redirect users after verification.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
+
+
+    /**
+     * Verification service
+     *
+     * @var Service
+     */
+    protected $verify;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Service $verify)
     {
+        $this->verify = $verify;
+
         $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
+        //        $this->middleware('signed')->only('verify');
+        //        $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    /**
+     * Show the phone verification form.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        return $request->user()->hasVerifiedPhone()
+            ? redirect($this->redirectPath())
+            : view('auth.verify');
+    }
+
+    /**
+     * Mark the authenticated user's phone number as verified.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function verify(Request $request)
+    {
+        $code = $request->post('code');
+        $phone = $request->user()->phone_number;
+
+        $verification = $this->verify->checkVerification($phone, $code);
+
+        if ($verification->isValid()) {
+            $request->user()->markPhoneAsVerified();
+            return ResponseFormatter::success("Mantap", 200);
+        }
+
+        $errors = new MessageBag();
+        foreach ($verification->getErrors() as $error) {
+            $errors->add('verification', $error);
+        }
+
+        return ResponseFormatter::error(null, "Kode Verifikasi Kadaluarsa", 400);
+    }
+
+    /**
+     * Resend the email verification notification.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resend(Request $request)
+    {
+        if ($request->user()->hasVerifiedPhone()) {
+            return redirect($this->redirectPath());
+        }
+
+        $phone = $request->user()->phone_number;
+        $channel = $request->post('channel', 'sms');
+        $verification = $this->verify->startVerification($phone, $channel);
+
+        if (!$verification->isValid()) {
+
+            $errors = new MessageBag();
+            foreach ($verification->getErrors() as $error) {
+                return ResponseFormatter::success("Mantap", 200);
+            }
+
+            return redirect('/verify')->withErrors($errors);
+        }
+
+        $messages = new MessageBag();
+        $messages->add('verification', "Another code sent to {$request->user()->phone_number}");
+
+        return ResponseFormatter::error(null, "Kirim ulang email gagal", 400);
     }
 }

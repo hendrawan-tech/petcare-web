@@ -16,17 +16,11 @@ class User extends Authenticatable
     use SoftDeletes;
     use HasApiTokens;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
-        'avatar',
-        'address',
-        'role_id',
+    protected $guarded = [
+        'id'
     ];
 
-    protected $hidden = ['password'];
+    protected $hidden = ['password', 'verified'];
 
     public function patients()
     {
@@ -46,5 +40,17 @@ class User extends Authenticatable
     public function practiceSchedules()
     {
         return $this->hasMany(PracticeSchedule::class);
+    }
+
+    public function hasVerifiedPhone()
+    {
+        return (bool)$this->verified;
+    }
+
+    public function markPhoneAsVerified()
+    {
+        return $this->forceFill([
+            'verified' => true,
+        ])->save();
     }
 }
