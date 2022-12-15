@@ -15,11 +15,12 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('type', ['Penjualan', 'Rawat Inap', 'Rawat Jalan', 'Pulang']);
             $table->string('total', 6);
+            $table->string('refund', 6);
             $table->string('code', 9);
             $table->enum('status', ['Belum Lunas', 'Lunas']);
-            $table->string('type', 30);
-            $table->unsignedBigInteger('medical_record_id');
+            $table->unsignedBigInteger('inpatient_id');
 
             $table->timestamps();
         });

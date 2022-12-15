@@ -15,11 +15,10 @@ class CreateItemInvoicesTable extends Migration
     {
         Schema::create('item_invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type', 50);
-            $table->string('price', 6);
-            $table->string('description');
+            $table->string('quantity', 2);
+            $table->string('price', 2);
+            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('invoice_id');
-
             $table->timestamps();
         });
     }

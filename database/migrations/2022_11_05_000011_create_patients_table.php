@@ -17,9 +17,9 @@ class CreatePatientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 50);
             $table->string('age', 2);
-            $table->string('gender', 1)->default('1');
+            $table->enum('gender', ['Jantan', 'Betina']);
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('speciesPatient_id');
+            $table->unsignedBigInteger('species_patient_id');
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

@@ -17,7 +17,13 @@ class CreateRegistrationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('urutan', 2);
             $table->unsignedBigInteger('patient_id');
-
+            $table->unsignedBigInteger('user_id');
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
             $table->timestamps();
         });
     }

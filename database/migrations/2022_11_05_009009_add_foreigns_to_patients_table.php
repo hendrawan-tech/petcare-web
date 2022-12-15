@@ -15,7 +15,7 @@ class AddForeignsToPatientsTable extends Migration
     {
         Schema::table('patients', function (Blueprint $table) {
             $table
-                ->foreign('speciesPatient_id')
+                ->foreign('species_patient_id')
                 ->references('id')
                 ->on('species_patients')
                 ->onUpdate('CASCADE')
@@ -38,7 +38,7 @@ class AddForeignsToPatientsTable extends Migration
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->dropForeign(['speciesPatient_id']);
+            $table->dropForeign(['species_patient_id']);
             $table->dropForeign(['user_id']);
         });
     }

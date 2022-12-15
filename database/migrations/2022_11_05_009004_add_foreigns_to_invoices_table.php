@@ -15,9 +15,9 @@ class AddForeignsToInvoicesTable extends Migration
     {
         Schema::table('invoices', function (Blueprint $table) {
             $table
-                ->foreign('medical_record_id')
+                ->foreign('inpatient_id')
                 ->references('id')
-                ->on('medical_records')
+                ->on('inpatients')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -31,7 +31,7 @@ class AddForeignsToInvoicesTable extends Migration
     public function down()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->dropForeign(['medical_record_id']);
+            $table->dropForeign(['inpatient_id']);
         });
     }
 }

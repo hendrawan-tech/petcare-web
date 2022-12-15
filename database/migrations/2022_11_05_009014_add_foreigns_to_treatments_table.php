@@ -15,9 +15,9 @@ class AddForeignsToTreatmentsTable extends Migration
     {
         Schema::table('treatments', function (Blueprint $table) {
             $table
-                ->foreign('medical_record_id')
+                ->foreign('invoice_id')
                 ->references('id')
-                ->on('medical_records')
+                ->on('invoices')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -31,7 +31,7 @@ class AddForeignsToTreatmentsTable extends Migration
     public function down()
     {
         Schema::table('treatments', function (Blueprint $table) {
-            $table->dropForeign(['medical_record_id']);
+            $table->dropForeign(['invoice_id']);
         });
     }
 }

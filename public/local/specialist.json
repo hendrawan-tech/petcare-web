@@ -1,0 +1,43 @@
+[
+    {
+        "id": "1",
+        "name": "Farmakologi Klinik dan Anestesiologi Veteriner"
+    },
+    {
+        "id": "2",
+        "name": "Parasitologi Klinik Veteriner"
+    }
+    ,
+    {
+        "id": "3",
+        "name": "Ilmu Bedah dan Bedah Plastik Hewan"
+    },
+    {
+        "id": "4",
+        "name": "Ilmu Kesehatan Hewan Ternak Besar (Penyakit Dalam)"
+    },
+    {
+        "id": "5",
+        "name": "Ilmu Kesehatan Hewan Ternak Kecil (Penyakit Dalam)"
+    },
+    {
+        "id": "6",
+        "name": "Ilmu Manajemen Kesehatan Unggas"
+    },
+    {
+        "id": "7",
+        "name": "Ilmu Kesehatan Akuakultur (Ikan)"
+    },
+    {
+        "id": "8",
+        "name": "Obstetri dan Ginekologi Hewan (Theriogenologi)"
+    },
+    {
+        "id": "9",
+        "name": "Ilmu Kesehatan Kepala dan Leher Hewan (Gigi, THT, Mata, Bedah Kepala dan Leher)"
+    },
+    {
+        "id": "10",
+        "name": "Ilmu Penyakit Hewan Kesayangan Mamalia (Penyakit Dalam)"
+    }
+]

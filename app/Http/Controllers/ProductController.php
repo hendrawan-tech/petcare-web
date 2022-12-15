@@ -52,6 +52,8 @@ class ProductController extends Controller
         $file->move($destinationPath, $fileName);
         $data['image'] = $file->getClientOriginalName();
 
+        $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
+
         Product::create($data);
 
         return redirect('/dashboard/products')->with('success', 'Produk Ditambah');

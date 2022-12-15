@@ -17,7 +17,7 @@ class CreateControlSchedulesTable extends Migration
             $table->bigIncrements('id');
             $table->date('date_control');
             $table->text('description');
-            $table->unsignedBigInteger('medical_record_id');
+            $table->unsignedBigInteger('invoice_id');
 
             $table->timestamps();
         });

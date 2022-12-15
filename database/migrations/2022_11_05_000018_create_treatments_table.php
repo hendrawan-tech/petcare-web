@@ -17,8 +17,8 @@ class CreateTreatmentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('description');
             $table->string('price', 6);
-            $table->unsignedBigInteger('medical_record_id');
-
+            $table->string('photo', 100);
+            $table->unsignedBigInteger('invoice_id');
             $table->timestamps();
         });
     }

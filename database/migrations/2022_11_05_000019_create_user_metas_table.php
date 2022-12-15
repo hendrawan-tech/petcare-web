@@ -16,8 +16,8 @@ class CreateUserMetasTable extends Migration
         Schema::create('user_metas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('alumni', 100);
-            $table->string('specialist', 60);
+            $table->string('alumni');
+            $table->string('specialist');
             $table->string('str_number', 16);
             $table->string('experience', 2);
 

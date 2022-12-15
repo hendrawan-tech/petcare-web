@@ -17,10 +17,13 @@ class CreateMedicalRecordsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('registration_id');
             $table->text('diagnosis');
-            $table->text('handling');
+            $table->text('therapy');
+            $table->text('anamnesa');
+            $table->text('description');
             $table->string('weight', 2);
             $table->string('temp', 3);
-
+            $table->string('age', 2);
+            
             $table->timestamps();
         });
     }

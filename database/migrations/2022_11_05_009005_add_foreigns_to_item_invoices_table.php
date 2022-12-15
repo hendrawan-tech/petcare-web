@@ -20,6 +20,12 @@ class AddForeignsToItemInvoicesTable extends Migration
                 ->on('invoices')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
+            $table
+                ->foreign('product_id')
+                ->references('id')
+                ->on('products')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
     }
 
@@ -31,6 +37,7 @@ class AddForeignsToItemInvoicesTable extends Migration
     public function down()
     {
         Schema::table('item_invoices', function (Blueprint $table) {
+            $table->dropForeign(['product_id']);
             $table->dropForeign(['invoice_id']);
         });
     }

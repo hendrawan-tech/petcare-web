@@ -16,9 +16,9 @@ class CreateInpatientsTable extends Migration
         Schema::create('inpatients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('medical_record_id');
-            $table->enum('status', ['Dirawat', 'Selesai']);
+            $table->enum('status', ['Dirawat', 'Selesai'])->default('Dirawat');
+            $table->enum('step', ['1', '2', '3', '4'])->default('1');
             $table->enum('type', ['Rawat Inap', 'Rawat Jalan', 'Pulang']);
-            $table->string('step', 1);
             $table->timestamps();
         });
     }

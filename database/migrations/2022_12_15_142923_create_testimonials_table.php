@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateArticlesTable extends Migration
+class CreateTestimonialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title', 150);
-            $table->string('slug', 200);
-            $table->string('images', 100);
-            $table->text('description');
-            $table->unsignedBigInteger('category_article_id');
+        Schema::create('testimonials', function (Blueprint $table) {
+            $table->id();
+            $table->string('testimoni');
+            $table->string('star', 1);
             $table->unsignedBigInteger('user_id');
             $table
                 ->foreign('user_id')
@@ -38,6 +35,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('testimonials');
     }
 }

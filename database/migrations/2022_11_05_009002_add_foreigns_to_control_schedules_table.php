@@ -15,9 +15,9 @@ class AddForeignsToControlSchedulesTable extends Migration
     {
         Schema::table('control_schedules', function (Blueprint $table) {
             $table
-                ->foreign('medical_record_id')
+                ->foreign('invoice_id')
                 ->references('id')
-                ->on('medical_records')
+                ->on('invoices')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -31,7 +31,7 @@ class AddForeignsToControlSchedulesTable extends Migration
     public function down()
     {
         Schema::table('control_schedules', function (Blueprint $table) {
-            $table->dropForeign(['medical_record_id']);
+            $table->dropForeign(['invoice_id']);
         });
     }
 }
