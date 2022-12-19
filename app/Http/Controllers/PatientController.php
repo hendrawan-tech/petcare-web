@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\SpeciesPatient;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -25,7 +27,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::where('role_id', '3')->get();
+        $species = SpeciesPatient::all();
+        return view('patient.create', compact('users', 'species'));
     }
 
     /**
@@ -36,7 +40,26 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'species_patient_id' => 'required',
+            'user_id' => 'required',
+            'image' => 'file|between:0,2048|mimes:jpeg,jpg,png',
+        ]);
+
+        $file = $request->file('image');
+        $nameFile = $file->getClientOriginalName();
+        $destinationPath = public_path() . '/upload';
+        $file->move($destinationPath, $nameFile);
+        $filename = $file->getClientOriginalName();
+
+        $data['image'] = $filename;
+
+        Patient::create($data);
+
+        return redirect('/dashboard/patients')->with('success', 'Pasien Ditambah');
     }
 
     /**

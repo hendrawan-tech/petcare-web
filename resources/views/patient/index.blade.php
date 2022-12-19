@@ -9,6 +9,14 @@
                         Data Pasien</span>
                 </div>
             </div>
+            <div class="d-flex my-xl-auto right-content">
+                <div class="pe-1 mb-xl-0">
+                    <a href="/dashboard/patients/create" class="btn btn-primary">
+                        <i class="mdi mdi-plus me-2"></i>
+                        Tambah Pasien
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="row row-sm">
             <div class="col-xl-12">

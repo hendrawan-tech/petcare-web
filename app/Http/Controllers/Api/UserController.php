@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,36 @@ class UserController extends Controller
     {
         $user = $request->user();
         $user['user_metas'] = $request->user()->userMetas;
+        if ($user) {
+            return ResponseFormatter::success($user);
+        } else {
+            return ResponseFormatter::error();
+        }
+    }
+
+    public function getOwner()
+    {
+        $user = User::where('role_id', 3)->get();
+        if ($user) {
+            return ResponseFormatter::success($user);
+        } else {
+            return ResponseFormatter::error();
+        }
+    }
+
+    public function getPatient()
+    {
+        $patient = Patient::with('user')->get();
+        if ($patient) {
+            return ResponseFormatter::success($patient);
+        } else {
+            return ResponseFormatter::error();
+        }
+    }
+
+    public function getDetailUser(Request $request)
+    {
+        $user = User::where('id', $request->id)->with('patients')->get();
         if ($user) {
             return ResponseFormatter::success($user);
         } else {

@@ -24,6 +24,9 @@ Route::post('/verify', [VerificationController::class, 'verify'])->middleware('a
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', [UserController::class, 'getUser']);
+    Route::get('/owners', [UserController::class, 'getOwner']);
+    Route::get('/owner/{id}', [UserController::class, 'getDetailUser']);
+    Route::get('/patients', [UserController::class, 'getPatient']);
     Route::get('/articles', [DataController::class, 'articles']);
     Route::get('/schedules/doctor', [DataController::class, 'scheduleDoctor']);
 });

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryArticleController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PracticeScheduleController;
 use App\Http\Controllers\ProductCategoryController;
@@ -41,5 +42,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('/category-articles', CategoryArticleController::class);
     Route::resource('/articles', ArticleController::class);
     Route::resource('/products', ProductController::class);
+    Route::resource('/owners', OwnerController::class);
     Route::resource('/category-products', ProductCategoryController::class);
 });
