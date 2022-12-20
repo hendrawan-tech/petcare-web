@@ -1,13 +1,13 @@
 <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
 <aside class="app-sidebar sidebar-scroll">
     <div class="main-sidebar-header active">
-        <a class="desktop-logo logo-light active" href="/dashboard/home"><img
+        <a class="desktop-logo logo-light active" href="{{ url('/dashboard/home') }}"><img
                 src="{{ asset('assets/img/brand/logo.png') }}" class="main-logo" alt="logo"></a>
-        <a class="desktop-logo logo-dark active" href="/dashboard/home"><img
+        <a class="desktop-logo logo-dark active" href="{{ url('/dashboard/home') }}"><img
                 src="{{ asset('assets/img/brand/logo-white.png') }}" class="main-logo dark-theme" alt="logo"></a>
-        <a class="logo-icon mobile-logo icon-light active" href="/dashboard/home"><img
+        <a class="logo-icon mobile-logo icon-light active" href="{{ url('/dashboard/home') }}"><img
                 src="{{ asset('assets/img/brand/favicon.png') }}" class="logo-icon" alt="logo"></a>
-        <a class="logo-icon mobile-logo icon-dark active" href="/dashboard/home"><img
+        <a class="logo-icon mobile-logo icon-dark active" href="{{ url('/dashboard/home') }}"><img
                 src="{{ asset('assets/img/brand/favicon-white.png') }}" class="logo-icon dark-theme" alt="logo"></a>
     </div>
     <div class="main-sidemenu">
@@ -27,7 +27,7 @@
         <ul class="side-menu">
             <li class="side-item side-item-category">Main</li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/home">
+                <a class="side-menu__item" href="{{ url('/dashboard/home') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M5 5h4v6H5zm10 8h4v6h-4zM5 17h4v2H5zM15 5h4v2h-4z" opacity=".3" />
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/registrations">
+                <a class="side-menu__item" href="{{ url('/dashboard/registrations') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3" />
@@ -50,7 +50,7 @@
             </li>
             <li class="side-item side-item-category">Dokter</li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/users">
+                <a class="side-menu__item" href="{{ url('/dashboard/users') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path d="M5 5h15v3H5zm12 5h3v9h-3zm-7 0h5v9h-5zm-5 0h3v9H5z" opacity=".3"></path>
@@ -62,7 +62,7 @@
                 </a>
             </li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/practice-schedules">
+                <a class="side-menu__item" href="{{ url('/dashboard/practice-schedules') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" class="side-menu__icon"
                         viewBox="0 0 24 24">
                         <g>
@@ -96,7 +96,7 @@
             </li>
             <li class="side-item side-item-category">Pasien</li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/owners">
+                <a class="side-menu__item" href="{{ url('/dashboard/owners') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path d="M5 5h15v3H5zm12 5h3v9h-3zm-7 0h5v9h-5zm-5 0h3v9H5z" opacity=".3"></path>
@@ -108,7 +108,7 @@
                 </a>
             </li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/patients">
+                <a class="side-menu__item" href="{{ url('/dashboard/patients') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3"></path>
@@ -120,7 +120,7 @@
                 </a>
             </li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/species">
+                <a class="side-menu__item" href="{{ url('/dashboard/species') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path
@@ -137,7 +137,7 @@
             </li>
             <li class="side-item side-item-category">Artikel</li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/articles">
+                <a class="side-menu__item" href="{{ url('/dashboard/articles') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" class="side-menu__icon"
                         viewBox="0 0 24 24">
                         <g>
@@ -170,7 +170,7 @@
                 </a>
             </li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/category-articles">
+                <a class="side-menu__item" href="{{ url('/dashboard/category-articles') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path
@@ -185,7 +185,7 @@
             </li>
             <li class="side-item side-item-category">Produk</li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/products">
+                <a class="side-menu__item" href="{{ url('/dashboard/products') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3"></path>
@@ -197,7 +197,7 @@
                 </a>
             </li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/category-products">
+                <a class="side-menu__item" href="{{ url('/dashboard/category-products') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path
@@ -212,7 +212,7 @@
             </li>
             <li class="side-item side-item-category">Pengaturan</li>
             <li class="slide">
-                <a class="side-menu__item" href="/dashboard/settings/profile">
+                <a class="side-menu__item" href="{{ url('/dashboard/settings/profile') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none"></path>
                         <path
