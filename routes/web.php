@@ -7,6 +7,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PracticeScheduleController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SpeciesPatientController;
 use App\Http\Controllers\UserController;
@@ -44,4 +45,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('/products', ProductController::class);
     Route::resource('/owners', OwnerController::class);
     Route::resource('/category-products', ProductCategoryController::class);
+    Route::resource('/registrations', RegistrationController::class);
 });

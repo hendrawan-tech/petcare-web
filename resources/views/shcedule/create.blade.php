@@ -32,8 +32,8 @@
                         <div class="row">
                             <div class="col-lg-4 mg-t-20 mg-lg-t-0">
                                 <label class="main-content-label tx-11 tx-medium tx-gray-600">Dokter</label>
-                                <select class="form-control @error('user_id') is-invalid @enderror select2" name="user_id">
-                                    <option value="">Pilih Dokter</option>
+                                <select class="form-control @error('user_id') is-invalid @enderror js-example-basic-single"
+                                    name="user_id">
                                     @foreach ($users as $item)
                                         <option value="{{ $item->id }}" {{ old('user_id') ? 'selected' : '' }}>
                                             {{ $item->name }}</option>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-lg-4 mg-t-20 mg-lg-t-0">
                                 <label class="main-content-label tx-11 tx-medium tx-gray-600">Hari</label>
-                                <select class="form-control @error('day') is-invalid @enderror select2" name="day">
+                                <select class="form-control @error('day') is-invalid @enderror" name="day">
                                     <option value="">Pilih Hari</option>
                                     @foreach ($days as $item)
                                         <option value="{{ $item }}" {{ old('day') ? 'selected' : '' }}>
@@ -59,7 +59,7 @@
                             <div class="col-lg-2 col-12">
                                 <div class="form-group">
                                     <label class="main-content-label tx-11 tx-medium tx-gray-600">Dari Jam</label>
-                                    <input class="form-control @error('start_time') is-invalid @enderror" type="text"
+                                    <input class="form-control @error('start_time') is-invalid @enderror" type="time"
                                         name="start_time" value="{{ old('start_time') }}">
                                     @error('start_time')
                                         <small class="form-text text-danger">{{ $message }}</small>
@@ -69,7 +69,7 @@
                             <div class="col-lg-2 col-12">
                                 <div class="form-group">
                                     <label class="main-content-label tx-11 tx-medium tx-gray-600">Sampai Jam</label>
-                                    <input class="form-control @error('end_time') is-invalid @enderror" type="text"
+                                    <input class="form-control @error('end_time') is-invalid @enderror" type="time"
                                         name="end_time" value="{{ old('end_time') }}">
                                     @error('end_time')
                                         <small class="form-text text-danger">{{ $message }}</small>

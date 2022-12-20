@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(PracticeSchedule::class);
     }
 
+    public function registration()
+    {
+        return $this->hasMany(Registration::class);
+    }
+
     public function hasVerifiedPhone()
     {
         return (bool)$this->verified;

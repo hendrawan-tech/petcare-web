@@ -39,8 +39,8 @@ class OwnerController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|min:3',
-            'phone_number' => 'required|max:16',
-            'email' => 'required|min:3',
+            'phone_number' => 'required|regex:/(0)[0-9]{9}/|max:16',
+            'email' => 'required|min:3|unique:users,email',
             'address' => 'required|min:3',
             'profession' => 'required|min:3',
             'avatar' => 'required|file|between:0,2048|mimes:jpeg,jpg,png',

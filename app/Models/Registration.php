@@ -9,10 +9,15 @@ class Registration extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['urutan', 'patient_id'];
+    protected $guarded = ['id'];
 
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

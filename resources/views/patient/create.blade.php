@@ -43,8 +43,13 @@
                             <div class="col-lg-4 col-12">
                                 <div class="form-group">
                                     <label class="main-content-label tx-11 tx-medium tx-gray-600">Umur</label>
-                                    <input class="form-control @error('age') is-invalid @enderror" type="text"
-                                        name="age" value="{{ old('age') }}">
+                                    <select class="form-control @error('age') is-invalid @enderror" name="age">
+                                        <option value="2">2 Tahun</option>
+                                        <option value="1">1 Tahun</option>
+                                        <option value="3">3 Tahun</option>
+                                        <option value="4">4 Tahun</option>
+                                        <option value="5">5 Tahun</option>
+                                    </select>
                                     @error('age')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -63,7 +68,8 @@
                             </div>
                             <div class="col-6">
                                 <label class="main-content-label tx-11 tx-medium tx-gray-600">Owner</label>
-                                <select class="form-control @error('user_id') is-invalid @enderror select2" name="user_id">
+                                <select class="form-control @error('user_id') is-invalid @enderror js-example-basic-single"
+                                    name="user_id">
                                     <option value="">Pilih Owner</option>
                                     @foreach ($users as $item)
                                         <option value="{{ $item->id }}" {{ old('user_id') ? 'selected' : '' }}>

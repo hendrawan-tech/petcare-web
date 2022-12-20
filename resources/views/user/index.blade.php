@@ -52,7 +52,7 @@
                                             </td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
-                                            <td>{{ $item->phone }}</td>
+                                            <td>{{ $item->phone_number }}</td>
                                             <td class="d-flex">
                                                 <a onclick='modal_konfir("/dashboard/users/{{ $item->id }}")'
                                                     href="#" class="btn m-auto btn-danger btn-icon">

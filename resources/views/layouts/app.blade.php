@@ -31,6 +31,17 @@
     <link href="{{ asset('assets/css/skin-modes.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <style>
+        .select2-container .select2-selection--single {
+            height: 40px !important;
+            padding: 0.375rem 0.75rem;
+            border: 1px solid #e1e5ef !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            margin-top: 5px !important;
+        }
+    </style>
     @stack('styles')
 
 </head>
@@ -263,6 +274,8 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/form-elements.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     @if (session()->has('success'))
         <script>
@@ -274,7 +287,10 @@
     @endif
 
     <script>
-        /* Simple Alpine Image Viewer */
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
         function modal_konfir(url) {
             $('#modal_delete').modal('show', {
                 backdrop: 'static'

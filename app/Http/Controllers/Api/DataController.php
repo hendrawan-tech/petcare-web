@@ -12,7 +12,7 @@ class DataController extends Controller
 {
     public function articles(Request $request)
     {
-        $articles = Article::orderBy('id', 'DESC')->paginate(10);
+        $articles = Article::orderBy('id', 'DESC')->paginate($request->limit);
         return ResponseFormatter::success($articles);
     }
 

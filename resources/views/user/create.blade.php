@@ -63,8 +63,14 @@
                             <div class="col-lg-6 col-12">
                                 <div class="form-group">
                                     <label class="main-content-label tx-11 tx-medium tx-gray-600">Alumni</label>
-                                    <input class="form-control @error('alumni') is-invalid @enderror" type="text"
-                                        name="alumni" value="{{ old('alumni') }}">
+                                    <select
+                                        class="form-control @error('alumni') is-invalid @enderror js-example-basic-single"
+                                        name="alumni">
+                                        @foreach ($campus as $item)
+                                            <option value="{{ $item['name'] }}" {{ old('alumni') ? 'selected' : '' }}>
+                                                {{ $item['name'] }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('alumni')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
@@ -73,9 +79,15 @@
                             <div class="col-lg-6 col-12">
                                 <div class="form-group">
                                     <label class="main-content-label tx-11 tx-medium tx-gray-600">Spesialis</label>
-                                    <input class="form-control @error('specialist') is-invalid @enderror" type="text"
-                                        name="specialist" value="{{ old('specialist') }}">
-                                    @error('specialist')
+                                    <select
+                                        class="form-control @error('specialist') is-invalid @enderror js-example-basic-single"
+                                        name="specialist">
+                                        @foreach ($specialist as $item)
+                                            <option value="{{ $item['name'] }}" {{ old('specialist') ? 'selected' : '' }}>
+                                                {{ $item['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('alumni')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -93,8 +105,15 @@
                             <div class="col-lg-6 col-12">
                                 <div class="form-group">
                                     <label class="main-content-label tx-11 tx-medium tx-gray-600">Pengalaman</label>
-                                    <input class="form-control @error('experience') is-invalid @enderror" type="text"
-                                        name="experience" value="{{ old('experience') }}">
+                                    <select
+                                        class="form-control @error('experience') is-invalid @enderror"
+                                        name="experience">
+                                        <option value="1">1 Tahun</option>
+                                        <option value="2">2 Tahun</option>
+                                        <option value="3">3 Tahun</option>
+                                        <option value="4">4 Tahun</option>
+                                        <option value="5">5 Tahun</option>
+                                    </select>
                                     @error('experience')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror

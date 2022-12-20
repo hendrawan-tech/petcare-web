@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserMeta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -28,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $campus = json_decode(file_get_contents(base_path('public/local/campus.json')), true);
+        $specialist = json_decode(file_get_contents(base_path('public/local/specialist.json')), true);
+        return view('user.create', compact('campus', 'specialist'));
     }
 
     /**
@@ -41,12 +44,12 @@ class UserController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|min:3',
-            'phone' => 'required|max:16',
-            'email' => 'required|min:3',
+            'phone' => 'required|regex:/(0)[0-9]{9}/|max:16',
             'address' => 'required|min:3',
+            'email' => 'required|min:3|unique:users,email',
             'alumni' => 'required|min:3',
             'specialist' => 'required|min:3',
-            'str_number' => 'required|max:16',
+            'str_number' => 'required|digits:16|numeric',
             'experience' => 'required|max:2',
             'avatar' => 'required|file|between:0,2048|mimes:jpeg,jpg,png',
         ]);
@@ -65,6 +68,7 @@ class UserController extends Controller
             'role_id' => 2,
             'avatar' => $filename,
             'password' => Hash::make('12345678'),
+            'verified' => '1',
         ]);
 
         UserMeta::create([
