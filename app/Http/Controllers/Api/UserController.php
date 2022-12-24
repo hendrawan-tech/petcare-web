@@ -56,9 +56,9 @@ class UserController extends Controller
         }
     }
 
-    public function getOwner()
+    public function getOwner(Request $request)
     {
-        $user = User::where('role_id', 3)->get();
+        $user = User::where('role_id', 3)->paginate($request->limit);
         if ($user) {
             return ResponseFormatter::success($user);
         } else {
@@ -68,7 +68,7 @@ class UserController extends Controller
 
     public function getPatient()
     {
-        $patient = Patient::with('user')->get();
+        $patient = Patient::with('user', 'speciesPatient')->get();
         if ($patient) {
             return ResponseFormatter::success($patient);
         } else {
@@ -78,11 +78,13 @@ class UserController extends Controller
 
     public function getDetailUser(Request $request)
     {
-        $user = User::where('id', $request->id)->with('patients')->get();
-        if ($user) {
-            return ResponseFormatter::success($user);
+        $patient = Patient::where('user_id', $request->id)->with('speciesPatient')->paginate($request->limit);
+        if ($patient) {
+            return ResponseFormatter::success($patient);
         } else {
             return ResponseFormatter::error();
         }
     }
+
+    // get()
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DataController;
+use App\Http\Controllers\Api\MedicController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerificationController;
@@ -27,6 +28,26 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/owners', [UserController::class, 'getOwner']);
     Route::get('/owner/{id}', [UserController::class, 'getDetailUser']);
     Route::get('/patients', [UserController::class, 'getPatient']);
+    Route::get('/schedules/doctor', [DataController::class, 'scheduleDoctor']);
+    //article
     Route::get('/articles', [DataController::class, 'articles']);
-    Route::get('/schedules/doctor', [DataController::class, 'scheduleDoctor']); 
+    Route::get('/category-articles', [DataController::class, 'categoryArticles']);
+    //registration
+    Route::get('/registration', [DataController::class, 'listRegistration']);
+    Route::delete('/registration/{id}', [DataController::class, 'deleteRegistration']);
+    //medic
+    Route::get('/medical-record', [MedicController::class, 'getMedic']);
+    Route::post('/medical-record', [MedicController::class, 'createMedic']);
+    //treatment
+    Route::get('/treatment', [MedicController::class, 'getTreatment']);
+    Route::post('/treatment', [MedicController::class, 'createTreatment']);
+    // control schedule
+    Route::get('/control-schedule', [MedicController::class, 'getControl']);
+    Route::post('/control-schedule', [MedicController::class, 'createControl']);
+    // control schedule
+    Route::get('/prescription', [MedicController::class, 'getPrescription']);
+    Route::post('/prescription/{invoice}', [MedicController::class, 'createPrescription']);
+    //product
+    Route::get('/products', [DataController::class, 'products']);
+    Route::get('/category-products', [DataController::class, 'categoryProduct']);
 });

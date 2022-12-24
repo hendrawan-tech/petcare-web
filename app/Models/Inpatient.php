@@ -9,7 +9,7 @@ class Inpatient extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['medical_record_id', 'status', 'type'];
+    protected $guarded = ['id'];
 
 
     public function medicalRecord()

@@ -9,7 +9,7 @@ class Treatment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['description', 'price', 'medical_record_id'];
+    protected $guarded = ['id'];
 
     public function medicalRecord()
     {

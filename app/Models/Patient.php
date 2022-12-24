@@ -27,7 +27,7 @@ class Patient extends Model
 
     public function speciesPatient()
     {
-        return $this->belongsTo(SpeciesPatient::class, 'speciesPatient_id');
+        return $this->belongsTo(SpeciesPatient::class, 'species_patient_id');
     }
 
     public function invoices()

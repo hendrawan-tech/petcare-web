@@ -9,7 +9,7 @@ class MedicalPrescription extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['description', 'medical_record_id', 'product_id'];
+    protected $guarded = ['id'];
 
 
     protected $table = 'medical_prescriptions';

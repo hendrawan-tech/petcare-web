@@ -10,7 +10,7 @@ class ControlSchedule extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['date_control', 'description', 'medical_record_id'];
+    protected $guarded = ['id'];
 
 
     protected $table = 'control_schedules';

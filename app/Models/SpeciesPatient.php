@@ -17,6 +17,6 @@ class SpeciesPatient extends Model
 
     public function patients()
     {
-        return $this->hasMany(Patient::class, 'speciesPatient_id');
+        return $this->hasMany(Patient::class, 'species_patient_id');
     }
 }
