@@ -35,7 +35,13 @@ class DataController extends Controller
 
     public function listRegistration(Request $request)
     {
-        $registrations = Registration::orderBy('urutan', 'DESC')->whereDate('date_regis', Carbon::now())->with('user', 'patient')->paginate($request->limit);
+        $registrations = [];
+        if ($request->flag == 'doctor') {
+            $user = $request->user();
+            $registrations = Registration::orderBy('urutan', 'ASC')->where(['user_id' => $user->id, 'status' => 1])->whereDate('date_regis', Carbon::now())->with('user', 'patient')->paginate($request->limit);
+        } else {
+            $registrations = Registration::orderBy('urutan', 'ASC')->where('status', 1)->whereDate('date_regis', Carbon::now())->with('user', 'patient')->paginate($request->limit);
+        }
         foreach ($registrations as $item) {
             $item->patient->user;
             $item->patient->speciesPatient;

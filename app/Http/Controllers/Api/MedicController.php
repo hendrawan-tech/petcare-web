@@ -39,18 +39,26 @@ class MedicController extends Controller
             $code .= rand(0, strlen('0123456789') - 1);
         }
 
-        $invoice = Invoice::create([
+        Invoice::create([
             'type' => $request->type,
             'code' => $code,
             'inpatient_id' => $inpatient->id,
         ]);
 
-        return ResponseFormatter::success($invoice);
+        $registration = Registration::find($request->registration_id);
+        $registration->update([
+            'status' => 0,
+        ]);
+        $registration->patient->user;
+        $registration->patient->speciesPatient;
+
+        return ResponseFormatter::success($registration);
     }
 
     public function getMedic(Request $request)
     {
-        $registration = Registration::orderBy('created_at', 'DESC')->with('user', 'patient', 'medicalRecord')->paginate($request->limit);
+        $user = $request->user();
+        $registration = Registration::orderBy('created_at', 'DESC')->where('user_id', $user->id)->with('user', 'patient', 'medicalRecord')->paginate($request->limit);
         foreach ($registration as $item) {
             $item->patient->user;
             $item->patient->speciesPatient;
