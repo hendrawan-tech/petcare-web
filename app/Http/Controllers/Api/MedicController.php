@@ -39,7 +39,7 @@ class MedicController extends Controller
             $code .= rand(0, strlen('0123456789') - 1);
         }
 
-        Invoice::create([
+        $invoice = Invoice::create([
             'type' => $request->type,
             'code' => $code,
             'inpatient_id' => $inpatient->id,
@@ -49,10 +49,8 @@ class MedicController extends Controller
         $registration->update([
             'status' => 0,
         ]);
-        $registration->patient->user;
-        $registration->patient->speciesPatient;
 
-        return ResponseFormatter::success($registration);
+        return ResponseFormatter::success($invoice);
     }
 
     public function getMedic(Request $request)

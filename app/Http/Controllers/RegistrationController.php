@@ -45,7 +45,7 @@ class RegistrationController extends Controller
             'user_id' => 'required',
             'patient_id' => 'required',
         ]);
-
+        
         $registration = Registration::orderBy('created_at', 'DESC')->whereDate('date_regis', Carbon::now())->first();
         $data['urutan'] = $registration != null ? $registration->urutan + 1 : 1;
         $data['date_regis'] = Carbon::now();
