@@ -61,6 +61,7 @@ class MedicController extends Controller
             $item->patient->user;
             $item->patient->speciesPatient;
             $item->medicalRecord->inpatients;
+            $item->medicalRecord->inpatients->invoice;
         }
         return ResponseFormatter::success($registration);
     }

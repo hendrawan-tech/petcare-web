@@ -40,6 +40,6 @@ class MedicalRecord extends Model
 
     public function invoice()
     {
-        return $this->hasMany(Invoice::class);
+        return $this->belongsTo(Invoice::class);
     }
 }
