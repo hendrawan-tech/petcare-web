@@ -68,16 +68,20 @@ class MedicController extends Controller
 
     public function createTreatment(Request $request)
     {
-        $file = $request->file('photo');
-        $fileName = $file->getClientOriginalName();
-        $destinationPath = public_path() . '/upload';
-        $file->move($destinationPath, $fileName);
-        $photo = $file->getClientOriginalName();
+        $data =  $request->all();
+        $data['photo'] = null;
+        if ($data['photo'] !== null) {
+            $file = $request->file('photo');
+            $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path() . '/upload';
+            $file->move($destinationPath, $fileName);
+            $data['photo'] = $file->getClientOriginalName();
+        }
 
         $treatment = Treatment::create([
             'invoice_id' => $request->invoice_id,
             'price' => $request->price,
-            'photo' => $photo,
+            'photo' => $data['photo'],
             'description' => $request->description,
         ]);
 
