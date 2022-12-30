@@ -35,7 +35,7 @@ class MedicalRecord extends Model
 
     public function inpatients()
     {
-        return $this->hasMany(Inpatient::class);
+        return $this->hasOne(Inpatient::class);
     }
 
     public function invoice()

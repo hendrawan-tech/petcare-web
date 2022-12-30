@@ -60,6 +60,7 @@ class MedicController extends Controller
         foreach ($registration as $item) {
             $item->patient->user;
             $item->patient->speciesPatient;
+            $item->medicalRecord->inpatients;
         }
         return ResponseFormatter::success($registration);
     }
