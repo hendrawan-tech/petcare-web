@@ -56,11 +56,12 @@ class MedicController extends Controller
     public function getMedic(Request $request)
     {
         $user = $request->user();
-        $registration = Registration::orderBy('created_at', 'DESC')->where(['user_id' => $user->id, 'status' => 1])->with('user', 'patient', 'medicalRecord')->paginate($request->limit);
+        $registration = Registration::orderBy('created_at', 'DESC')->where(['user_id' => $user->id, 'status' => 0])->with('user', 'patient')->paginate($request->limit);
         if (count($registration) > 0) {
             foreach ($registration as $item) {
                 $item->patient->user;
                 $item->patient->speciesPatient;
+                $item->medicalRecord;
                 $item->medicalRecord->inpatients;
                 $item->medicalRecord->inpatients->invoice;
             }
