@@ -73,6 +73,16 @@
                                     </div>
                                     <div class="col-12 my-2">
                                         <div class="form-group">
+                                            <label class="main-content-label tx-11 tx-medium tx-gray-600">Harga</label>
+                                            <input class="form-control @error('price') is-invalid @enderror" type="text"
+                                                name="price" value="{{ $product->price }}">
+                                            @error('price')
+                                                <small class="form-text text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12 my-2">
+                                        <div class="form-group">
                                             <label class="main-content-label tx-11 tx-medium tx-gray-600">Stok</label>
                                             <input class="form-control @error('stock') is-invalid @enderror" type="text"
                                                 name="stock" value="{{ $product->stock }}">
