@@ -49,7 +49,6 @@ class MedicController extends Controller
         $registration->update([
             'status' => 0,
         ]);
-
         return ResponseFormatter::success($invoice);
     }
 
@@ -72,9 +71,11 @@ class MedicController extends Controller
     public function getControlSchedule(Request $request)
     {
         $user = $request->user();
-        $registration = Registration::orderBy('created_at', 'DESC')->where('user_id', $user->id)->with('user', 'patient', 'medicalRecord')->paginate($request->limit);
-        foreach ($registration as $item) {
-            $item->medicalRecord->inpatients->invoice->controlScedules;
+        $registration = Registration::orderBy('created_at', 'DESC')->where(['user_id' => $user->id, 'status' => 0])->with('user', 'patient', 'medicalRecord')->paginate($request->limit);
+        if(count($registration) > 0) {
+            foreach ($registration as $item) {
+                $item->medicalRecord->inpatients->invoice->controlScedules;
+            }
         }
         return ResponseFormatter::success($registration);
     }
