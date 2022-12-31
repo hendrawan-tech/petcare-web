@@ -140,7 +140,7 @@ class MedicController extends Controller
 
     public function getPrescription(Request $request)
     {
-        $prescription = MedicalPrescription::where('invoice_id', $request->invoice_id)->orderBy('created_at', 'DESC')->paginate($request->limit);
+        $prescription = MedicalPrescription::where('invoice_id', $request->invoice_id)->orderBy('created_at', 'DESC')->with('product')->paginate($request->limit);
         return ResponseFormatter::success($prescription);
     }
 }

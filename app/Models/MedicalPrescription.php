@@ -11,7 +11,6 @@ class MedicalPrescription extends Model
 
     protected $guarded = ['id'];
 
-
     protected $table = 'medical_prescriptions';
 
     public function product()
