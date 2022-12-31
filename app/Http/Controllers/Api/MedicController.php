@@ -66,6 +66,26 @@ class MedicController extends Controller
         return ResponseFormatter::success($registration);
     }
 
+    public function getControlSchedule(Request $request)
+    {
+        $user = $request->user();
+        $registration = Registration::orderBy('created_at', 'DESC')->where('user_id', $user->id)->with('user', 'patient', 'medicalRecord')->paginate($request->limit);
+        foreach ($registration as $item) {
+            $item->medicalRecord->inpatients->invoice->controlScedules;
+        }
+        return ResponseFormatter::success($registration);
+    }
+
+    public function updateMedic($id)
+    {
+        $inpatient = Inpatient::find($id);
+
+        $inpatient->update([
+            'status' => 'Selesai',
+        ]);
+        return ResponseFormatter::success($inpatient);
+    }
+
     public function createTreatment(Request $request)
     {
         $data = $request->all();

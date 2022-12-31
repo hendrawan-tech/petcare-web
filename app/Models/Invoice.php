@@ -21,4 +21,9 @@ class Invoice extends Model
     {
         return $this->hasMany(ItemInvoice::class);
     }
+
+    public function controlScedules()
+    {
+        return $this->hasOne(ControlSchedule::class);
+    }
 }

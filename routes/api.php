@@ -38,11 +38,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //medic
     Route::get('/medical-record', [MedicController::class, 'getMedic']);
     Route::post('/medical-record', [MedicController::class, 'createMedic']);
+    Route::get('/medical-record/{id}', [MedicController::class, 'updateMedic']);
     //treatment
     Route::get('/treatment', [MedicController::class, 'getTreatment']);
     Route::post('/treatment', [MedicController::class, 'createTreatment']);
     // control schedule
     Route::get('/control-schedule', [MedicController::class, 'getControl']);
+    Route::get('/control-schedule-doctor', [MedicController::class, 'getControlSchedule']);
     Route::post('/control-schedule', [MedicController::class, 'createControl']);
     // control schedule
     Route::get('/prescription', [MedicController::class, 'getPrescription']);

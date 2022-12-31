@@ -9,22 +9,12 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $patients = Patient::all();
         return view('patient.index', compact('patients'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $users = User::where('role_id', '3')->get();
@@ -32,12 +22,6 @@ class PatientController extends Controller
         return view('patient.create', compact('users', 'species'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -62,12 +46,6 @@ class PatientController extends Controller
         return redirect('/dashboard/patients')->with('success', 'Pasien Ditambah');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Patient  $patient
-     * @return \Illuminate\Http\Response
-     */
     public function show(Patient $patient)
     {
         //

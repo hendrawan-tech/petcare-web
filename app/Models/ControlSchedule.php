@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ControlSchedule extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = ['id'];
 
 
@@ -22,5 +22,10 @@ class ControlSchedule extends Model
     public function medicalRecord()
     {
         return $this->belongsTo(MedicalRecord::class);
+    }
+
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class);
     }
 }

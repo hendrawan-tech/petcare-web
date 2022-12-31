@@ -6,7 +6,6 @@ use App\Models\Article;
 use App\Models\Patient;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
