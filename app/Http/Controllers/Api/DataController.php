@@ -58,7 +58,7 @@ class DataController extends Controller
 
     public function products(Request $request)
     {
-        $products = Product::orderBy('created_at', 'DESC')->paginate($request->limit);
+        $products = Product::orderBy('created_at', 'DESC')->where('category_id', '1')->paginate($request->limit);
         return ResponseFormatter::success($products);
     }
 
