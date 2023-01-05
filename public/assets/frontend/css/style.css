@@ -302,19 +302,18 @@ b {
     background: #6a06ad;
 }
 .color-primary {
-    color: #3264f5;
+    color: #22B455;
 }
 .color-secondary {
-    color: #7202bb;
+    color: #32ABE4;
 }
 .gradient-bg {
     background-image: linear-gradient(
         to left,
-        #3264f5,
-        #4a54e8,
-        #5b42db,
-        #682ccb,
-        #7202bb
+        #1b78dd,
+        #36aff6,
+        #57ddc2,
+        #4bc8de
     ) !important;
 }
 
@@ -437,7 +436,7 @@ a:hover {
 .solid-white-btn {
     background: #ffffff;
     border-color: #ffffff;
-    color: #7202bb;
+    color: #22B455;
     border-radius: 30px;
 }
 .solid-white-btn:hover {
@@ -451,7 +450,7 @@ a:hover {
 }
 .outline-white-btn:hover {
     background: #ffffff;
-    color: #7202bb;
+    color: #22B455;
 }
 
 /*icon size*/
@@ -558,11 +557,10 @@ select.form-control.has-value {
 .bg-transparent.affix {
     background-image: linear-gradient(
         to left,
-        #3264f5,
-        #4a54e8,
-        #5b42db,
-        #682ccb,
-        #7202bb
+        #1b78dd,
+        #36aff6,
+        #4bc8de,
+        #57ddc2
     ) !important;
 }
 
@@ -980,11 +978,10 @@ select.form-control.has-value {
     content: "";
     background-image: linear-gradient(
         to left,
-        rgba(50, 100, 245, 0.9),
-        rgba(74, 84, 232, 0.88),
-        rgba(91, 66, 219, 0.85),
-        rgba(104, 44, 203, 0.88),
-        rgba(114, 2, 187, 0.9)
+        rgba(27, 120, 221, 0.9),
+        rgba(54, 175, 246, 0.88),
+        rgba(75, 200, 222, 0.85),
+        rgba(87, 221, 194, 0.88)
     );
     width: 100%;
     height: 100%;
@@ -1914,7 +1911,7 @@ button.scroll-top:focus {
     color: #ffffff;
     text-align: center;
     cursor: pointer;
-    background: #7202bb;
+    background: #22b455;
     transition: 1s ease;
     border: none;
 }
