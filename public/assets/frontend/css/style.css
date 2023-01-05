@@ -609,7 +609,7 @@ select.form-control.has-value {
     opacity: 1;
 }
 .menu li a.active {
-    color: #7202bb;
+    color: #22B455;
 }
 
 .menu ul {
@@ -674,7 +674,7 @@ select.form-control.has-value {
 .menu ul li a:hover,
 .menu ul li:hover > a {
     color: #ffffff;
-    background: #7202bb;
+    background: #22B455;
 }
 
 .menu ul.sub-menu li:first-child a:hover,
@@ -845,7 +845,7 @@ select.form-control.has-value {
 
     .menu li a:hover,
     .menu li:hover > a {
-        background: #3264f5;
+        background: #22B455;
         color: #fff;
     }
 
