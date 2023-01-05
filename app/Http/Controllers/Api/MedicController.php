@@ -72,7 +72,7 @@ class MedicController extends Controller
     {
         $user = $request->user();
         $registration = Registration::orderBy('created_at', 'DESC')->where(['user_id' => $user->id, 'status' => 0])->with('user', 'patient', 'medicalRecord')->paginate($request->limit);
-        if(count($registration) > 0) {
+        if (count($registration) > 0) {
             foreach ($registration as $item) {
                 $item->medicalRecord->inpatients->invoice->controlScedules;
             }
@@ -86,6 +86,9 @@ class MedicController extends Controller
 
         $inpatient->update([
             'status' => 'Selesai',
+        ]);
+        Invoice::where('id', $inpatient->invoice->id)->update([
+            'status' => 'Belum Lunas',
         ]);
         return ResponseFormatter::success($inpatient);
     }
