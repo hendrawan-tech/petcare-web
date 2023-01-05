@@ -286,6 +286,15 @@
         </script>
     @endif
 
+    @if (session()->has('failed'))
+        <script>
+            const notyf = new Notyf({
+                dismissible: true
+            })
+            notyf.error('{{ session('failed') }}')
+        </script>
+    @endif
+
     <script>
         $(document).ready(function() {
             $('.js-example-basic-single').select2();

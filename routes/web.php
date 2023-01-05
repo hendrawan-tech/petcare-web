@@ -11,6 +11,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SpeciesPatientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::put('/settings/update', [SettingController::class, 'updateprofile']);
     Route::resource('/users', UserController::class);
     Route::resource('/practice-schedules', PracticeScheduleController::class);
+    Route::resource('/transactions', TransactionController::class);
+    Route::post('/transactions/{id}/pay', [TransactionController::class, 'pay']);
     Route::resource('/patients', PatientController::class);
     Route::resource('/species', SpeciesPatientController::class);
     Route::resource('/category-articles', CategoryArticleController::class);

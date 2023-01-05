@@ -22,4 +22,9 @@ class MedicalPrescription extends Model
     {
         return $this->belongsTo(Inpatient::class);
     }
+
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }

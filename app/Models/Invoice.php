@@ -22,8 +22,23 @@ class Invoice extends Model
         return $this->hasMany(ItemInvoice::class);
     }
 
+    public function medicalPrescription()
+    {
+        return $this->hasMany(MedicalPrescription::class);
+    }
+
+    public function treatment()
+    {
+        return $this->hasMany(Treatment::class);
+    }
+
     public function controlScedules()
     {
         return $this->hasOne(ControlSchedule::class);
+    }
+
+    public function inpatient()
+    {
+        return $this->belongsTo(Inpatient::class);
     }
 }
