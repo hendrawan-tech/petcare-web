@@ -47,7 +47,7 @@
                                             <td>
                                                 <div
                                                     style="width: 30px; height: 30px; border-radius: 50%; position: relative; overflow: hidden;">
-                                                    <img src="{{ asset($item->image ? 'upload/' . $item->avatar : 'assets/img/faces/6.jpg') }}"
+                                                    <img src="{{ asset($item->image ? 'upload/' . $item->image : 'assets/img/faces/6.jpg') }}"
                                                         style="width: 100%; height: 100%; object-fit: cover;">
                                                 </div>
                                             </td>
