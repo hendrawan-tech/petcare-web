@@ -54,7 +54,7 @@
                                             <td>{{ $item->user->name }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->age }} Tahun</td>
-                                            <td>{{ $item->gender == '1' ? 'Laki-laki' : 'Perempuan' }}</td>
+                                            <td>{{ $item->gender }}</td>
                                             <td class="d-flex">
                                                 <a onclick='modal_konfir("/dashboard/patients/{{ $item->id }}")'
                                                     href="#" class="btn m-auto btn-danger btn-icon">
