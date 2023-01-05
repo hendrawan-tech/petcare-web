@@ -302,10 +302,10 @@ b {
     background: #6a06ad;
 }
 .color-primary {
-    color: #22B455;
+    color: #22b455;
 }
 .color-secondary {
-    color: #32ABE4;
+    color: #32abe4;
 }
 .gradient-bg {
     background-image: linear-gradient(
@@ -337,7 +337,7 @@ a:hover {
 }
 
 .color-2 {
-    color: #9123ff;
+    color: #32ABE4;
 }
 .color-2-bg {
     background: rgba(145, 35, 255, 0.15);
@@ -436,7 +436,7 @@ a:hover {
 .solid-white-btn {
     background: #ffffff;
     border-color: #ffffff;
-    color: #22B455;
+    color: #22b455;
     border-radius: 30px;
 }
 .solid-white-btn:hover {
@@ -450,7 +450,7 @@ a:hover {
 }
 .outline-white-btn:hover {
     background: #ffffff;
-    color: #22B455;
+    color: #22b455;
 }
 
 /*icon size*/
@@ -743,11 +743,10 @@ select.form-control.has-value {
     .navbar {
         background-image: linear-gradient(
             to left,
-            #3264f5,
-            #305be4,
-            #3b4fe2,
-            #4740de,
-            #7202bb
+            #1b78dd,
+            #36aff6,
+            #4bc8de,
+            #57ddc2
         ) !important;
         padding: 0.85rem 1rem !important;
     }
