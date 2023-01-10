@@ -122,13 +122,13 @@ class MedicController extends Controller
 
     public function getTreatment(Request $request)
     {
-        $treatment = Treatment::where('invoice_id', $request->invoice_id)->first();
+        $treatment = Treatment::where('invoice_id', $request->invoice_id)->orderBy('created_at', 'DESC')->paginate($request->limit);
         return ResponseFormatter::success($treatment);
     }
 
     public function getInvoice(Request $request)
     {
-        $invoice = Invoice::where('id', $request->invoice_id)->orderBy('created_at', 'DESC')->paginate($request->limit);
+        $invoice = Invoice::where('id', $request->invoice_id)->first();
         return ResponseFormatter::success($invoice);
     }
 
