@@ -122,7 +122,7 @@ class MedicController extends Controller
 
     public function getTreatment(Request $request)
     {
-        $treatment = Treatment::where('invoice_id', $request->invoice_id)->orderBy('created_at', 'DESC')->paginate($request->limit);
+        $treatment = Treatment::where('invoice_id', $request->invoice_id)->first();
         return ResponseFormatter::success($treatment);
     }
 
