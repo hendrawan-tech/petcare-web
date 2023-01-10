@@ -42,6 +42,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //treatment
     Route::get('/treatment', [MedicController::class, 'getTreatment']);
     Route::post('/treatment', [MedicController::class, 'createTreatment']);
+    //invoice
+    Route::get('/invoice', [MedicController::class, 'getInvoice']);
     // control schedule
     Route::get('/control-schedule', [MedicController::class, 'getControl']);
     Route::get('/control-schedule-doctor', [MedicController::class, 'getControlSchedule']);

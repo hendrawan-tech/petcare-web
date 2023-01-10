@@ -126,6 +126,12 @@ class MedicController extends Controller
         return ResponseFormatter::success($treatment);
     }
 
+    public function getInvoice(Request $request)
+    {
+        $invoice = Invoice::where('invoice_id', $request->invoice_id)->orderBy('created_at', 'DESC')->paginate($request->limit);
+        return ResponseFormatter::success($invoice);
+    }
+
     public function createControl(Request $request)
     {
         $controlSchedule = ControlSchedule::create([
